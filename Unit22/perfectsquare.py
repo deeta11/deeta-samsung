@@ -5,3 +5,4 @@ if root.is_integer():
     print(f"{num} is perfect square")
 else:
     print(f"{num} is not perfect sqaure")
+    
