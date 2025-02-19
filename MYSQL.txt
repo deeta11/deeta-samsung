@@ -1,0 +1,206 @@
+###########################################################################################################
+                                        #        MySQL Queries        #
+###########################################################################################################
+
+-----------------------------------------------------------------------------------------------------------
+1. CREATE DATABASE
+
+-- Syntax:
+CREATE DATABASE database_name;
+
+-- Example:
+CREATE DATABASE school;
+
+-----------------------------------------------------------------------------------------------------------
+2. USE DATABASE
+
+-- Syntax:
+USE database_name;
+
+-- Example:
+USE school;
+
+
+-----------------------------------------------------------------------------------------------------------
+3. CREATE TABLE
+
+-- Syntax:
+CREATE TABLE table_name (
+    column1 datatype [constraints],
+    column2 datatype [constraints],
+    ...
+);
+
+-- Example:
+CREATE TABLE students (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    age INT,
+    gender CHAR(1)
+);
+
+-----------------------------------------------------------------------------------------------------------
+4. INSERT INTO (Add Data)
+
+-- Syntax:
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);
+
+-- Example (Single Row):
+INSERT INTO students (name, age, gender)
+VALUES ("Ifrah", 20, "F");
+
+-- Example (Multiple Rows):
+INSERT INTO students (name, age, gender)
+VALUES 
+    ("Abhinav", 19, "M"),
+    ("Sank", 20, "M"),
+    ("Alice", 21, "F");
+
+-----------------------------------------------------------------------------------------------------------
+5. SELECT (Retrieve Data)
+
+-- Syntax:
+SELECT column1, column2, ...
+FROM table_name
+[WHERE condition]
+[ORDER BY column ASC|DESC]
+[LIMIT number];
+
+-- Examples:
+-- Select all columns:
+SELECT * FROM students;
+
+-- Select specific columns:
+SELECT name, age FROM students;
+
+-- With condition:
+SELECT * FROM students WHERE age > 19;
+
+-- Order results:
+SELECT * FROM students ORDER BY age DESC;
+
+-- Limit results:
+SELECT * FROM students LIMIT 2;
+
+-----------------------------------------------------------------------------------------------------------
+6. UPDATE (Modify Data)
+
+-- Syntax:
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+-- Example:
+UPDATE students
+SET age = 21
+WHERE name = "Ifrah";
+
+-----------------------------------------------------------------------------------------------------------
+7. DELETE (Remove Data)
+
+-- Syntax:
+DELETE FROM table_name
+WHERE condition;
+
+-- Example:
+DELETE FROM students
+WHERE name = "Sank";
+
+-----------------------------------------------------------------------------------------------------------
+8. DROP (Delete Tables or Databases)
+
+-- Drop Table:
+DROP TABLE table_name;
+-- Example:
+DROP TABLE students;
+
+-- Drop Database:
+DROP DATABASE database_name;
+-- Example:
+DROP DATABASE school;
+
+
+-----------------------------------------------------------------------------------------------------------
+9. ALTER TABLE (Modify Structure)
+
+-- Add a column:
+ALTER TABLE students ADD email VARCHAR(100);
+
+-- Modify a column:
+ALTER TABLE students MODIFY age INT NOT NULL;
+
+-- Drop a column:
+ALTER TABLE students DROP COLUMN email;
+
+-- Rename a column:
+ALTER TABLE students RENAME COLUMN gender TO sex;
+
+-- Rename the table:
+ALTER TABLE students RENAME TO learners;
+
+
+-----------------------------------------------------------------------------------------------------------
+10. JOIN (Combine Data from Multiple Tables)
+
+-- Syntax (INNER JOIN):
+SELECT a.column, b.column
+FROM table1 a
+INNER JOIN table2 b ON a.common_column = b.common_column;
+
+-- Example:
+SELECT students.name, courses.course_name
+FROM students
+INNER JOIN courses ON students.id = courses.student_id;
+
+
+-----------------------------------------------------------------------------------------------------------
+11. GROUP BY & HAVING (Aggregate Data)
+
+-- Syntax:
+SELECT column, AGG_FUNCTION(column)
+FROM table_name
+GROUP BY column
+[HAVING condition];
+
+-- Example:
+SELECT gender, COUNT(*) AS total
+FROM students
+GROUP BY gender
+HAVING total > 1;
+
+
+-----------------------------------------------------------------------------------------------------------
+12. CREATE INDEX (Improve Query Speed)
+
+-- Syntax:
+CREATE INDEX index_name
+ON table_name (column);
+
+-- Example:
+CREATE INDEX idx_name ON students(name);
+
+-----------------------------------------------------------------------------------------------------------
+13. TRUNCATE (Quickly Delete All Data)
+
+-- Syntax:
+TRUNCATE TABLE table_name;
+
+-- Example:
+TRUNCATE TABLE students;
+
+
+-----------------------------------------------------------------------------------------------------------
+
+Bonus: Constraints Overview
+-------------------------------
+| Constraint     | Purpose                 | Example                                         |
+|----------------|-------------------------|------------------------------------------------ |
+| PRIMARY KEY    | Uniquely identifies rows| id INT PRIMARY KEY                              |
+| UNIQUE         | Ensures unique values   | email VARCHAR(50) UNIQUE                        |
+| NOT NULL       | Prevents empty values   | name VARCHAR(50) NOT NULL                       |
+| DEFAULT        | Sets default values     | status VARCHAR(10) DEFAULT 'active'             |
+| FOREIGN KEY    | Links tables            | FOREIGN KEY(student_id) REFERENCES students(id) |
+-----------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------
