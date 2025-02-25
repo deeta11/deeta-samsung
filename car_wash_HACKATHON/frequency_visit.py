@@ -1,14 +1,25 @@
 import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Read the CSV file
-df = pd.read_csv('car_wash_analytics_dataset_with_maintenance_frequency.csv')
+df = pd.read_csv('deeta-samsung/car_wash_HACKATHON/car_wash_datasetcsv.csv')
+heatmap_data = df.pivot_table(index='Customer Name', columns='Service', values='ID', aggfunc='count', fill_value=0)
 
-# Count repeat vs new customers
-visit_counts = df['Frequency of Visit'].value_counts()
+plt.figure(figsize=(12, 10))
+heatmap = sns.heatmap(
+    heatmap_data,
+    cmap='BuGn',
+    annot=True,
+    fmt='d',
+    linecolor='black'
+)
 
-# Plot pie chart
-plt.figure(figsize=(8, 8))
-plt.pie(visit_counts, labels=visit_counts.index, autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff'])
-plt.title('Frequency of Visits', fontsize=16)
+plt.title('Customer Visits by Service', fontsize=18, pad=20)
+plt.xlabel('Service', fontsize=14, labelpad=10)
+plt.ylabel('Customer Name', fontsize=14, labelpad=10)
+plt.yticks(fontsize=12)
+cbar = heatmap.collections[0].colorbar
+cbar.set_label('Number of Visits', fontsize=10)
+plt.tight_layout()
 plt.show()
+
