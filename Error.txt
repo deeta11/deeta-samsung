@@ -1,11 +1,58 @@
 TYPE ERROR-
-    A TypeError happens when you try to do something with a value that isn’t allowed for its type. For example, trying to add a number to a word.
-        Example:
-            x = "hello"
-            y = 5
-            print(x + y)
+  A TypeError happens when you try to do something with a value that isn’t allowed for its type. For example, trying to add a number to a word.
+  Example:
+    x = "hello"
+    y = 5
+    print(x + y)
 
 NAME ERROR-
-    A NameError happens when you try to use a variable or function that hasn't been defined.
-        Example:
-            print(x)  # NameError: name 'x' is not defined
+  A NameError happens when you try to use a variable or function that hasn't been defined.
+  Example:
+    print(x)
+
+VALUE ERROR-
+  A ValueError happens when a function receives an argument of the correct type but with an inappropriate value.
+  Example:
+    num = int("abc")
+
+INDEX ERROR-
+  An IndexError occurs when you try to access an index that doesn’t exist in a list or other indexed collection.
+  Example:
+    lst = [1, 2, 3]
+    print(lst[5])
+
+KEY ERROR-
+  A KeyError occurs when you try to access a dictionary key that doesn’t exist.
+  Example:
+    d = {"a": 1, "b": 2}
+    print(d["c"])
+
+ATTRIBUTE ERROR-
+  An AttributeError happens when you try to access an attribute or method that doesn't exist for that object.
+  Example:
+    x = 5
+    x.append(10)
+
+ZERO DIVISION ERROR-
+  A ZeroDivisionError occurs when you try to divide a number by zero.
+  Example:
+    a = 10
+    b = 0
+    print(a / b)
+
+IMPORT ERROR-
+  An ImportError occurs when an import statement fails to find the module or object.
+  Example:
+    import non_existent_module
+
+INDENTATION ERROR-
+  An IndentationError occurs when there is a problem with the spaces or tabs used for indentation.
+  Example:
+    def greet():
+    print("Hello")
+
+SYNTAX ERROR-
+  A SyntaxError occurs when the code violates Python’s grammar rules.
+  Example:
+    if True
+      print("Hello")
