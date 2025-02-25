@@ -1,0 +1,90 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. Service Preferences Bar Chart (service_preference.py)
+    Objective:
+    The goal of this script is to create a bar chart that visualizes how many customers selected each service (such as car wash, detailing, etc.) from the dataset.
+
+    Steps:
+        -> Reading Data:
+            The script starts by reading the CSV file, car_wash_datasetcsv.csv, which contains information about customer service choices.
+
+        -> Counting Service Choices:
+            The value_counts() function is applied to the "Service" column of the dataset to count how many customers selected each type of service.
+
+        -> Creating the Bar Chart:
+            A bar chart is created using matplotlib. Each bar in the chart represents a different service, and the height of each bar indicates how many customers 
+            chose that service.
+
+        -> Labels and Titles:
+            Labels are added to both the x-axis (service types) and the y-axis (number of customers). A title is also added to the chart to describe what it represents.
+
+        -> Chart Customization:
+            The x-axis labels are rotated for better readability.
+            A grid is added on the y-axis to make it easier to read the values.
+            The layout is adjusted using tight_layout() to ensure everything fits neatly.
+    Outcome:
+        The final output is a bar chart that shows how many customers selected each service, making it easy to see which services are the most popular.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Customer Visits Heatmap (customer_visits_heatmap.py)
+   
+   Objective:
+    This code generates a heatmap to visualize the number of visits each customer made for each service.
+
+    Steps:
+    -> Reading Data:
+        The script starts by reading the car_wash_datasetcsv.csv file, which contains information on customer visits and services chosen.
+
+    -> Creating Pivot Table:
+        A pivot table is created using pandas.pivot_table(). The rows represent customer names, the columns represent service types 
+        and the values in the table represent the number of visits made by each customer for each service. The aggfunc='count' argument ensures that the visits are counted.
+
+    -> Generating the Heatmap:
+        The heatmap is generated using the seaborn.heatmap() function. This heatmap uses a color palette (here, 'viridis') 
+        where darker colors represent higher values (more visits). The annot=True argument displays the count of visits in each cell of the heatmap.
+
+    -> Customization:
+        Font size is increased using sns.set(font_scale=1.2) for better readability.
+        Line color and width are adjusted to make the grid lines visible.
+        The color bar (right side of the heatmap) is added to indicate the range of values, which shows the scale of the visit counts.
+    -> Labels and Titles:
+        The heatmap is labeled with a title, x-axis (services), and y-axis (customer names). The color bar is also labeled to show the meaning of the colors.
+
+    Outcome:
+        The output is a heatmap where customers are listed on the y-axis, services are listed on the x-axis, and the cells display the number of visits for each customer-service combination. This allows for easy identification of popular services and customers who visit frequently.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Customer Ratings Distribution (customer_ratings_distribution.py)
+
+    Objective:
+        This script creates a horizontal bar chart that shows the distribution of customer ratings for the services provided. The ratings range from 1 to 5 stars.
+
+    Steps:
+    -> Reading Data:
+        The script begins by reading the car_wash_datasetcsv.csv file, which contains the ratings given by customers for the services they received.
+
+    -> Counting Ratings:
+        The value_counts() function is used to count how many customers gave each rating (from 1 to 5 stars). 
+        The reindex(range(1, 6), fill_value=0) ensures that all ratings (1 through 5) are included in the count, even if some ratings are missing in the data.
+
+    -> Calculating Percentages:
+        The total number of ratings is calculated, and then the percentage of customers who gave each rating is computed. 
+        This helps in understanding the distribution of ratings as a percentage of the total.
+
+    -> Calculating the Average Rating:
+        The script calculates the average rating using df['Customer Rating'].mean(), which gives an overall average score based on all the ratings in the dataset.
+
+    -> Creating the Horizontal Bar Chart:
+        A horizontal bar chart is generated with matplotlib. Each bar represents a rating, and the length of each bar indicates the percentage of customers who gave that rating. The bars are colored orange, and the edges are highlighted in black for a clean look.
+
+    -> Displaying Rating Percentages:
+        The percentage of each rating is displayed next to the respective bar using plt.text(). This helps in quickly understanding how many customers gave each rating.
+
+    -> Displaying the Average Rating:
+        The average rating is shown at the top of the chart, giving an overall view of the service quality as rated by customers.
+
+    -> Customization:
+        Labels are added for the x-axis (percentage of customers) and the y-axis (ratings).
+        The chart is adjusted to fit the content neatly using plt.tight_layout().
+    Outcome:
+        The final output is a horizontal bar chart that shows the distribution of customer ratings. It provides insights into how customers rated the services, 
+        with the average rating displayed at the top.
+        
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
